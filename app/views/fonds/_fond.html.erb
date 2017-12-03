@@ -2,7 +2,7 @@
   <section class="fond-head">
     <h2><%= link_to fond.title, fond_path(fond) %></h2>
     <small>
-      <time><%= fond.created_at.to_date.strftime("%d %B, %Y")%></time>
+      <time><%= fond.created_at.to_date.strftime("%-d %B, %Y")%></time>
       |
       <%= link_to 'Изменить', edit_fond_path(fond) %>
       |

@@ -16,9 +16,9 @@ class FondsController < ApplicationController # :nodoc:
   def create
     @fond = Fond.new(fond_params)
     if @fond.save
-      redirect_to @fond
+      redirect_to @fond, success: 'Фонд успешно создан'
     else
-      render :new
+      render :new, danger: 'Фонд не создан'
     end
   end
 
@@ -27,15 +27,15 @@ class FondsController < ApplicationController # :nodoc:
 
   def update
     if @fond.update_attributes(fond_params)
-      redirect_to @fond
+      redirect_to @fond, success: 'Фонд успешно обновлён'
     else
-      render :edit
+      render :edit, danger: 'Фонд не обновлён'
     end
   end
 
   def destroy
     @fond.destroy
-    redirect_to fonds_path
+    redirect_to fonds_path, success: 'Фонд успешно удалён'
   end
 
   private
