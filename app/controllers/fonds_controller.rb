@@ -45,6 +45,6 @@ class FondsController < ApplicationController # :nodoc:
   end
 
   def fond_params
-    params.require(:fond).permit(:title, :summary, :body)
+    params.require(:fond).permit(:title, :summary, :body, :image)
   end
 end

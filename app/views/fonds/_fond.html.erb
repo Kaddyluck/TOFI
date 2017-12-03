@@ -10,7 +10,8 @@
     </small>
   </section>
 
-  <section class="fond-summary">
+  <section class="fond-summary clearfix">
+    <%= image_tag fond.image.url(:thumb), class: 'img-thumbnail thumb' if fond.image?%>
     <%= fond.summary %>
   </section>
 </article>

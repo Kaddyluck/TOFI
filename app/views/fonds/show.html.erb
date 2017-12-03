@@ -11,6 +11,7 @@
   </section>
 
   <section class="fond-body">
+    <%= image_tag @fond.image.url(:large), class: 'img-show' if @fond.image? %>
     <%= @fond.body %>
   </section>
 </article>
