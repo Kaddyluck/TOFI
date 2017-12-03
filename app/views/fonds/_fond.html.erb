@@ -1,0 +1,16 @@
+<article class="fond">
+  <section class="fond-head">
+    <h2><%= link_to fond.title, fond_path(fond) %></h2>
+    <small>
+      <time><%= fond.created_at.to_date.strftime("%d %B, %Y")%></time>
+      |
+      <%= link_to 'Изменить', edit_fond_path(fond) %>
+      |
+      <%= link_to 'Удалить', fond_path(fond), method: :delete, data: {confirm: 'Really nigga?'} %>
+    </small>
+  </section>
+
+  <section class="fond-summary">
+    <%= fond.summary %>
+  </section>
+</article>
