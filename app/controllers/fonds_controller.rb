@@ -1,5 +1,5 @@
 class FondsController < ApplicationController # :nodoc:
-
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_fond, only: [:show, :edit, :update, :destroy]
 
   def index

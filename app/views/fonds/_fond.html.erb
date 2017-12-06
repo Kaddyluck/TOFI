@@ -2,11 +2,15 @@
   <section class="fond-head">
     <h2><%= link_to fond.title, fond_path(fond) %></h2>
     <small>
-      <time><%= fond.created_at.to_date.strftime("%-d %B, %Y")%></time>
+      <b>Created: </b><time><%= fond.created_at.strftime("%e/%m/%y %H:%M")%></time>
+      |
+      <b>Last update: </b><time><%= fond.updated_at.strftime("%e/%m/%y %H:%M")%></time>
+      <% if user_signed_in?%>
       |
       <%= link_to 'Изменить', edit_fond_path(fond) %>
       |
       <%= link_to 'Удалить', fond_path(fond), method: :delete, data: {confirm: 'Really nigga?'} %>
+      <% end %>
     </small>
   </section>
 
