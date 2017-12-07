@@ -4,34 +4,30 @@
     <title>#ByClubbingTogether</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
     <div class="container">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <nav class="navbar fixed-top navbar-light bg-light">
         <a class="navbar-brand" href="<%= root_path %>">#ByClubbingTogether</a>
-        <!--<%= link_to 'Создать фонд', new_fond_path, class: 'btn btn-outline-primary pull-xs-right' %>-->
 
-        <div class="collapse navbar-collapse">
 
-          <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'Выход', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-              </li>
+                <%= link_to 'Создать фонд', new_fond_path, class: 'btn btn-outline-primary' %>
+                <%= link_to 'Выход', destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
+                </li>
             <% else %>
-              <li class="nav-item">
-                <%= link_to 'Вход', new_user_session_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Регистрация', new_user_registration_path, class: 'nav-link' %>
-              </li>
+                <div class="btn-group" role="group">
+                  <%= link_to 'Вход', new_user_session_path, class: 'btn btn-outline-info' %>
+                  <%= link_to 'Регистрация', new_user_registration_path, class: 'btn btn-outline-info' %>
+                </div>
             <% end %>
           </ul>
-        </div>
 
       </nav>
     </div>
