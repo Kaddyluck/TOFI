@@ -4,8 +4,13 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
+    <%= f.label :login %><br />
+    <%= f.text_field :login, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    <%= f.email_field :email, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -21,8 +26,24 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :Fullname %><br />
+    <%= f.text_field :fio, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :DOB %><br />
+    <%= f.date_select :dob, start_year: 1950, end_year: 2000, order: [:day, :month, :year], class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :DocType %><br />
+    <%= f.text_field :document_type, class: "form-control" %>
+  </div>
+
+
   <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-primary" %>
+    <%= f.submit "Зарегестрироваться", class: "btn btn-primary" %>
   </div>
 <% end %>
 
