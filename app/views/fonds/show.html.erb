@@ -5,11 +5,11 @@
       <b>Created: </b><time><%= @fond.created_at.strftime("%e/%m/%y %H:%M")%></time>
       |
       <b>Last update: </b><time><%= @fond.updated_at.strftime("%e/%m/%y %H:%M")%></time>
-      <% if user_signed_in?%>
+      <% if user_signed_in? && current_user.admin?%>
       |
-      <%= link_to 'Изменить', edit_fond_path(@fond) %>
+      <%= link_to 'Изменить', edit_admin_fond_path(@fond) %>
       |
-      <%= link_to 'Удалить', fond_path(@fond), method: :delete, data: {confirm: 'Really nigga?'} %>
+      <%= link_to 'Удалить', admin_fond_path(@fond), method: :delete, data: {confirm: 'Really nigga?'} %>
       <% end %>
     </small>
   </section>

@@ -10,7 +10,7 @@
 <% end %>
 
 
-<%= form_for @fond, html: {multipart: true} do |f| %>
+<%= form_for [:admin, @fond], html: {multipart: true} do |f| %>
 
   <div class="form-group">
     <%= f.label :title %>
@@ -33,8 +33,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
-    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary' %>
+    <%= f.submit t('.submit', action: @fond.new_record? ? 'Создать' : 'Изменить'), class: 'btn btn-primary' %>
+    <%= link_to t('.back'), :back, class: 'btn btn-outline-secondary' %>
 
   </div>
 

@@ -1,0 +1,29 @@
+ru:
+  activerecord:
+    models:
+      fond: 'Фонд'
+    attributes:
+      user:
+        login: 'Имя пользователя'
+        email: 'E-mail'
+        fio: 'ФИО'
+        document_type: 'Тип документа'
+        document_num: 'Номер документа'
+        phone_num: 'Номер телефона'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        current_password: 'Текущий пароль'
+        full_name: 'ФИО'
+        dob: 'Дата рождения'
+        doc_type: 'Тип документа, удостоверяющего личность'
+        doc_num: 'Номер документа, удостоверяющего личность'
+        phone: 'Номер контактного телефона'
+      fond:
+        title: 'Название'
+        summary: 'Краткое описание'
+        body: 'Полное описание'
+        image: 'Изображение'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+        taken: 'уже используется в системе'

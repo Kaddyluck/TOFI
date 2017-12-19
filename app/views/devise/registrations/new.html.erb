@@ -1,4 +1,4 @@
-<h2>Регистрация</h2>
+<h2 align="center"><%= t('.title')%></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -16,7 +16,7 @@
   <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> символов минимум)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
   </div>
@@ -27,22 +27,34 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :Fullname %><br />
+    <%= f.label :full_name %><br />
     <%= f.text_field :fio, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :DOB %><br />
+    <%= f.label :dob %><br />
     <%= f.date_select :dob, start_year: 1950, end_year: 2000, order: [:day, :month, :year], class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :DocType %><br />
+    <%= f.label :doc_type %><br />
     <%= f.text_field :document_type, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :doc_num %><br />
+    <%= f.text_field :document_num, class: "form-control" %>
+  </div>
 
-  <div class="actions">
+  <div class="form-group">
+    <%= f.label :phone %><br />
+    <%= f.phone_field :phone_num, class: "form-control" %>
+  </div>
+
+
+
+
+  <div class="actions" align="center">
     <%= f.submit "Зарегестрироваться", class: "btn btn-primary" %>
   </div>
 <% end %>
