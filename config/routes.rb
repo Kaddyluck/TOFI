@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'fonds#index'
   resources :users
 
+
   resources :fonds, only: [:show, :index]
 
 

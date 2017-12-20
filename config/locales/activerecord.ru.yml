@@ -5,14 +5,12 @@ ru:
       user: 'Пользователи'
     attributes:
       user:
-        login: 'Имя пользователя'
-        email: 'E-mail'
+        login: 'Имя пользователя*'
+        email: 'E-mail*'
         fio: 'ФИО'
-        document_type: 'Тип документа'
-        document_num: 'Номер документа'
         phone_num: 'Номер телефона'
-        password: 'Пароль'
-        password_confirmation: 'Подтверждение пароля'
+        password: 'Пароль*'
+        password_confirmation: 'Подтверждение пароля*'
         current_password: 'Текущий пароль'
         full_name: 'ФИО'
         dob: 'Дата рождения'
@@ -24,6 +22,8 @@ ru:
         summary: 'Краткое описание'
         body: 'Полное описание'
         image: 'Изображение'
+        already_collected: 'Собранная сумма'
+        full_price: 'Всего нужно собрать'
     errors:
       messages:
         blank: 'не может быть пустым'

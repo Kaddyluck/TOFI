@@ -4,6 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :confirmable, :validatable, :lockable
 
-  validates :login, :fio, :document_num, :phone_num, presence: true, uniqueness: true
-  validates :dob, :document_type, presence: true
+  validates :login, presence: true, uniqueness: true
 end

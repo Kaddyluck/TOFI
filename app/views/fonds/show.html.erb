@@ -3,6 +3,7 @@
     <h1 align="center"><%= @fond.title %></h1>
   </section>
   <br>
+  <h4 align="center"> <%= @fond.already_collected%> из <%= @fond.full_price%></h4>
   <div class="progress">
     <div class="progress-bar" role="progressbar"
          style="
@@ -18,7 +19,8 @@
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Введите сумму пожертвования ">
         <span class="input-group-btn">
-          <button class="btn btn-info" type="button">Помочь</button>
+
+          <!--<button class="btn btn-info" type="button">Помочь</button>-->
           </span>
       </div>
     </div>
