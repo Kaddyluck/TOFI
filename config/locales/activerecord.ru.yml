@@ -1,7 +1,8 @@
 ru:
   activerecord:
     models:
-      fond: 'Фонд'
+      fond: 'Фонды'
+      user: 'Пользователи'
     attributes:
       user:
         login: 'Имя пользователя'

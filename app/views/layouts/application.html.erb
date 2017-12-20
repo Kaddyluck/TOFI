@@ -20,10 +20,9 @@
               <li class="nav-item">
                 <% unless current_user.admin? %>
                   <%= link_to 'Профиль', user_path(current_user), class: 'btn btn-outline-primary' %>
-                  <%= link_to 'Баланс', user_path(current_user), class: 'btn btn-outline-primary' %>
               <% end %>
                 <% if current_user.admin? %>
-                  <%= link_to 'Создать фонд', new_admin_fond_path, class: 'btn btn-outline-primary' %>
+                  <%= link_to 'Создать фонд', rails_admin.new_path('fond'), class: 'btn btn-outline-primary' %>
                   <%= link_to 'Админка', rails_admin.dashboard_path, class: 'btn btn-outline-primary' %>
                 <% end %>
                 <%= link_to 'Выход', destroy_user_session_path, method: :delete, class: 'btn btn-info' %>

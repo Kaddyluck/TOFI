@@ -1,4 +1,4 @@
-<h1 align="center">Данные пользователя:</h1>
+<h1 align="center">Данные пользователя:</h1><br>
 <h3>Логин: <%= @user.login%></h3>
 <h3>E-mail: <%= @user.email%></h3>
 <h3>ФИО: <%= @user.fio%></h3>
@@ -6,9 +6,14 @@
 <h3>Тип документа, удостоверяющего личность: <%= @user.document_type%></h3>
 <h3>Номер документа, удостоверяющего личность: <%= @user.document_num%></h3>
 <h3>Телефон: <%= @user.phone_num%></h3>
+<br>
+<h3>Баланс: <%= @user.balance%></h3>
+
 
 
 <%= link_to 'Редактировать профиль', edit_user_registration_path, class: 'btn btn-outline-primary' %>
+<br>
+<br>
 <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary' %>
 
 <p></p>

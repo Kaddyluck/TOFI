@@ -1,23 +1,47 @@
 <article class="fond">
   <section class="fond-head">
-    <h1><%= @fond.title %></h1>
-    <small>
-      <b>Created: </b><time><%= @fond.created_at.strftime("%e/%m/%y %H:%M")%></time>
-      |
-      <b>Last update: </b><time><%= @fond.updated_at.strftime("%e/%m/%y %H:%M")%></time>
-      <% if user_signed_in? && current_user.admin?%>
-      |
-      <%= link_to 'Изменить', edit_admin_fond_path(@fond) %>
-      |
-      <%= link_to 'Удалить', admin_fond_path(@fond), method: :delete, data: {confirm: 'Really nigga?'} %>
-      <% end %>
-    </small>
+    <h1 align="center"><%= @fond.title %></h1>
   </section>
+  <br>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar"
+         style="
+         width: <%= @fond.already_collected != 0 ? ((@fond.already_collected.to_f / @fond.full_price)*100) : 100 %>%;"
+         aria-valuemin="0" aria-valuemax="100">
+      Собрано уже
+      <%= @fond.already_collected != 0 ? ((@fond.already_collected.to_f / @fond.full_price)*100).to_i : 100 %>%!
+    </div>
+  </div> <br>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Введите сумму пожертвования ">
+        <span class="input-group-btn">
+          <button class="btn btn-info" type="button">Помочь</button>
+          </span>
+      </div>
+    </div>
+  </div>
+  <br>
 
   <section class="fond-body">
+    <div align="center">
     <%= image_tag @fond.image.url(:large), class: 'img-show' if @fond.image? %>
+    </div>
     <%= @fond.body %>
-  </section>
+  </section> <br>
+  <small>
+    <b>Создан: </b><time><%= @fond.created_at.strftime("%e/%m/%y %H:%M")%></time>
+    |
+    <b>Последнее обновление: </b><time><%= @fond.updated_at.strftime("%e/%m/%y %H:%M")%></time>
+    <% if user_signed_in? && current_user.admin?%>
+      |
+      <%= link_to 'Изменить', rails_admin.edit_path(model_name: 'fond', id: @fond.id) %>
+      |
+      <%= link_to 'Удалить', rails_admin.delete_path(model_name: 'fond', id: @fond.id) %>
+    <% end %>
+  </small>
 </article>
 
 <%= render 'disqus' %>
