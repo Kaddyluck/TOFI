@@ -3,7 +3,7 @@
   <head>
     <title>#ByClubbingTogether</title>
     <%= csrf_meta_tags %>
-
+    <%= javascript_include_tag "application.js"%>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -51,6 +51,12 @@
       </div>
       <%= yield %>
     </div>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <a class="navbar-brand" href="#">⇡ Наверх</a>
+      <span class="text-muted"> Светлое будущее - наша цель</span>
+      <span class="text-muted"> e-mail: mail@bct.com</span>
+    </nav>
 
   </body>
 </html>

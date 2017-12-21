@@ -5,13 +5,17 @@
 <h3>Дата рождения: <%= @user.dob%></h3>
 <h3>Телефон: <%= @user.phone_num%></h3>
 <br>
+
+<%= form_tag user_add_money_path(@user), method: :put, remote: :true do%>
+
 <h3>Баланс: <%= @user.balance%></h3>
 
+<% end %>
 
-
+<%= button_to 'Пополнить баланс', user_add_money_path(@user), method: :put, class: 'btn btn-outline-primary'%> <br><br>
 <%= link_to 'Редактировать профиль', edit_user_registration_path, class: 'btn btn-outline-primary' %>
 <br>
 <br>
-<%= link_to 'Назад', :back, class: 'btn btn-outline-secondary' %>
+<%= link_to 'Назад', root_path, class: 'btn btn-outline-secondary' %>
 
 <p></p>

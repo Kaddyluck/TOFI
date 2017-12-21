@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def add_money
-    @user = User.find(params[:id])
+    @user = current_user
+    @user.update_attribute(:balance, @user.balance + 200)
   end
 end
