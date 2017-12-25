@@ -20,17 +20,39 @@
           <div class="input-group">
             <span class="input-group-addon">Пожертвовать сумму</span>
               <span class="input-group-btn">
-                <%= button_to '+1', fond_add_money_path(@fond, amount: 1), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+5', fond_add_money_path(@fond, amount: 5), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+10', fond_add_money_path(@fond, amount: 10), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+15', fond_add_money_path(@fond, amount: 15), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+20', fond_add_money_path(@fond, amount: 20), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+25', fond_add_money_path(@fond, amount: 25), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+50', fond_add_money_path(@fond, amount: 50), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+100', fond_add_money_path(@fond, amount: 100), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+250', fond_add_money_path(@fond, amount: 250), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+500', fond_add_money_path(@fond, amount: 500), method: :put, class: 'btn btn-info'%>
-                <%= button_to '+1000', fond_add_money_path(@fond, amount: 1000), method: :put, class: 'btn btn-info'%>
+                <% if @fond.full_price >= 1 && current_user.balance >= 1 %>
+                  <%= button_to '+1', fond_add_money_path(@fond, amount: 1), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 5 && current_user.balance >= 5 %>
+                  <%= button_to '+5', fond_add_money_path(@fond, amount: 5), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 10 && current_user.balance >= 10 %>
+                  <%= button_to '+10', fond_add_money_path(@fond, amount: 10), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 15 && current_user.balance >= 15 %>
+                  <%= button_to '+15', fond_add_money_path(@fond, amount: 15), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 20 && current_user.balance >= 20 %>
+                  <%= button_to '+20', fond_add_money_path(@fond, amount: 20), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 25 && current_user.balance >= 25 %>
+                  <%= button_to '+25', fond_add_money_path(@fond, amount: 25), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 50 && current_user.balance >= 50 %>
+                  <%= button_to '+50', fond_add_money_path(@fond, amount: 50), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 100 && current_user.balance >= 100 %>
+                  <%= button_to '+100', fond_add_money_path(@fond, amount: 100), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 250 && current_user.balance >= 250 %>
+                  <%= button_to '+250', fond_add_money_path(@fond, amount: 250), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 500 && current_user.balance >= 500 %>
+                  <%= button_to '+500', fond_add_money_path(@fond, amount: 500), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 1000 && current_user.balance >= 1000 %>
+                <%= button_to '+1000', fond_add_money_path(@fond, amount: 1000), method: :put, class: 'btn btn-info' %>
+                <% end %>
               </span>
           </div>
       </div>
