@@ -15,10 +15,10 @@
         <%= @fond.already_collected != 0 ? ((@fond.already_collected.to_f / @fond.full_price)*100).to_i : 0 %>%
       </div>
     </div> <br>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && !current_user.admin?%>
       <div class="row">
           <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Пожертвовать сумму</span>
+            <span class="input-group-addon">Пожертвовать сумму</span>
               <span class="input-group-btn">
                 <%= button_to '+1', fond_add_money_path(@fond, amount: 1), method: :put, class: 'btn btn-info'%>
                 <%= button_to '+5', fond_add_money_path(@fond, amount: 5), method: :put, class: 'btn btn-info'%>
@@ -34,11 +34,11 @@
               </span>
           </div>
       </div>
-<% end %>
-    <br>
-  <%else%>
-    <h4 align="center"> Необходимые средства собраны! </h4>
     <% end %>
+    <br>
+  <%elsif  @fond.full_price > 0%>
+    <h4 align="center"> Необходимые средства собраны! </h4>
+  <% end %>
 
   <section class="fond-body">
     <div align="center">
