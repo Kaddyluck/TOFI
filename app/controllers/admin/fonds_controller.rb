@@ -37,6 +37,6 @@ class Admin::FondsController < Admin::AdminController # :nodoc:
   end
 
   def fond_params
-    params.require(:fond).permit(:title, :summary, :body, :image)
+    params.require(:fond).permit(:title, :summary, :body, :image, :all_tags)
   end
 end

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     put :add_money
   end
 
+  resources :tags, only: [:show]
+
 
   resources :fonds, only: [:show, :index] do
     put :add_money

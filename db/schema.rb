@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220190229) do
+ActiveRecord::Schema.define(version: 20171225165157) do
 
   create_table "fonds", force: :cascade do |t|
     t.string   "title"
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 20171220190229) do
     t.string   "image"
     t.integer  "already_collected", default: 0
     t.integer  "full_price",        default: 0
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "fond_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fond_id"], name: "index_taggings_on_fond_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

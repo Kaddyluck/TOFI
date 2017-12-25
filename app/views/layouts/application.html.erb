@@ -49,8 +49,21 @@
           <% end %>
         </div>
       </div>
-      <%= yield %>
+
+      <div class="row">
+        <div class="col-md-10">
+            <%= yield %>
+        </div>
+        <div class="col-md-2">
+          <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class|%>
+            <%= link_to tag.name, tag_path(tag.name), class:css_class %>
+          <% end %>
+        </div>
+      </div>
     </div>
+
+    <br>
+    <br>
 
     <nav class="navbar fixed-bottom navbar-light bg-light">
       <a class="navbar-brand" href="#">⇡ Наверх</a>

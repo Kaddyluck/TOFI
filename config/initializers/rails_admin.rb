@@ -32,7 +32,7 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
 
   config.model 'Fond' do
-    exclude_fields :already_collected
+    exclude_fields :already_collected, :taggings
   end
 
 

@@ -19,4 +19,8 @@
       <%= link_to 'Удалить', rails_admin.delete_path(model_name: 'fond', id: fond.id) %>
     <% end %>
   </small>
+
+  <section class="footer-summary">
+    <%= raw fond.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-primary'}.join(' ') %>
+  </section>
 </article>

@@ -3,6 +3,8 @@ ru:
     models:
       fond: 'Фонды'
       user: 'Пользователи'
+      tag: 'Теги'
+      tagging: 'Теги - посты'
     attributes:
       user:
         login: 'Имя пользователя*'
@@ -19,6 +21,7 @@ ru:
         title: 'Название'
         summary: 'Краткое описание'
         body: 'Полное описание'
+        tags: 'Тэги'
         image: 'Изображение'
         already_collected: 'Собранная сумма'
         full_price: 'Всего нужно собрать'
