@@ -50,7 +50,7 @@
                 <% if (@fond.full_price - @fond.already_collected) >= 500 && @fond.full_price >= 500 && current_user.balance >= 500 %>
                   <%= button_to '+500', fond_add_money_path(@fond, amount: 500), method: :put, class: 'btn btn-info' %>
                 <% end %>
-                <% if (@fond.full_price - @fond.already_collected) >= 1001 && @fond.full_price >= 1000 && current_user.balance >= 1000 %>
+                <% if (@fond.full_price - @fond.already_collected) >= 1000 && @fond.full_price >= 1000 && current_user.balance >= 1000 %>
                 <%= button_to '+1000', fond_add_money_path(@fond, amount: 1000), method: :put, class: 'btn btn-info' %>
                 <% end %>
               </span>
