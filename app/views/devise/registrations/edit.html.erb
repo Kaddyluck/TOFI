@@ -14,11 +14,11 @@
 
   <div class="field">
     <br />
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <i>(оставьте пустым, если не хотите его менять)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> символов минимум</em>
     <% end %>
   </div>
 
@@ -28,19 +28,19 @@
   </div>
 
   <div class="field"><br />
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(необходим для подтверждения внесённых изменений)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions" align="center">
     <br>
-    <%= f.submit "Обновить", class: "btn btn-primary" %>
+    <%= f.submit 'Применить изменения', class: 'btn btn-primary' %>
     <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary' %>
   </div>
 <% end %>
 
 <h3>Удалить аккаунт</h3>
 
-<p>Really nigga? <%= button_to "Удалить аккаунт", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-danger" %></p>
+<p>Вы уверены? <%= button_to 'Да, прощай жестокий мир!', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: "btn btn-danger" %></p>
 
 

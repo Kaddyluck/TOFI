@@ -21,7 +21,7 @@
             <span class="input-group-addon">Пожертвовать сумму</span>
               <span class="input-group-btn">
                 <% if @fond.full_price >= 1 && current_user.balance >= 1 %>
-                  <%= button_to '+1', fond_add_money_path(@fond, amount: 1), method: :put, class: 'btn btn-info' %>
+                  <%= button_to '+1', fond_add_money_path(@fond, amount: 1), method: :put, remote: :true, url: '/update', class: 'btn btn-info' %>
                 <% end %>
                 <% if @fond.full_price >= 5 && current_user.balance >= 5 %>
                   <%= button_to '+5', fond_add_money_path(@fond, amount: 5), method: :put, class: 'btn btn-info' %>
@@ -78,7 +78,11 @@
       |
       <%= link_to 'Удалить', rails_admin.delete_path(model_name: 'fond', id: @fond.id) %>
     <% end %>
+
   </small>
+  <section class="footer-summary">
+    <%= raw @fond.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-primary'}.join(' ') %>
+  </section>
 </article>
 
 <%= render 'disqus' %>

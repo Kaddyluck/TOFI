@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'fonds#index'
   resources :users do
-    put :add_money
+    post :add_money
   end
 
   resources :tags, only: [:show]
