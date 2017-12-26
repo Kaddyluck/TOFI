@@ -1,0 +1,89 @@
+<article class="fond">
+  <section class="fond-head">
+    <h1 align="center"><%= @fond.title %></h1>
+  </section>
+  <br>
+
+  <% if @fond.already_collected < @fond.full_price %>
+    <h4 align="center">Собрано  <%= @fond.already_collected%> из <%= @fond.full_price%></h4>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar"
+           style="
+           width: <%= @fond.already_collected != 0 ? ((@fond.already_collected.to_f / @fond.full_price)*100) : 0%>%;"
+           aria-valuemin="0" aria-valuemax="100">
+
+        <%= @fond.already_collected != 0 ? ((@fond.already_collected.to_f / @fond.full_price)*100).to_i : 0 %>%
+      </div>
+    </div> <br>
+    <% if user_signed_in? && !current_user.admin?%>
+      <div class="row">
+          <div class="input-group">
+            <span class="input-group-addon">Пожертвовать сумму</span>
+              <span class="input-group-btn">
+                <% if @fond.full_price >= 1 && current_user.balance >= 1 %>
+                  <%= button_to '+1', fond_add_money_path(@fond, amount: 1), method: :put, remote: :true, url: '/update', class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 5 && current_user.balance >= 5 %>
+                  <%= button_to '+5', fond_add_money_path(@fond, amount: 5), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 10 && current_user.balance >= 10 %>
+                  <%= button_to '+10', fond_add_money_path(@fond, amount: 10), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 15 && current_user.balance >= 15 %>
+                  <%= button_to '+15', fond_add_money_path(@fond, amount: 15), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 20 && current_user.balance >= 20 %>
+                  <%= button_to '+20', fond_add_money_path(@fond, amount: 20), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 25 && current_user.balance >= 25 %>
+                  <%= button_to '+25', fond_add_money_path(@fond, amount: 25), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 50 && current_user.balance >= 50 %>
+                  <%= button_to '+50', fond_add_money_path(@fond, amount: 50), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 100 && current_user.balance >= 100 %>
+                  <%= button_to '+100', fond_add_money_path(@fond, amount: 100), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 250 && current_user.balance >= 250 %>
+                  <%= button_to '+250', fond_add_money_path(@fond, amount: 250), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 500 && current_user.balance >= 500 %>
+                  <%= button_to '+500', fond_add_money_path(@fond, amount: 500), method: :put, class: 'btn btn-info' %>
+                <% end %>
+                <% if @fond.full_price >= 1000 && current_user.balance >= 1000 %>
+                <%= button_to '+1000', fond_add_money_path(@fond, amount: 1000), method: :put, class: 'btn btn-info' %>
+                <% end %>
+              </span>
+          </div>
+      </div>
+    <% end %>
+    <br>
+  <%elsif  @fond.full_price > 0%>
+    <h4 align="center"> Необходимые средства собраны! </h4>
+  <% end %>
+
+  <section class="fond-body">
+    <div align="center">
+    <%= image_tag @fond.image.url(:large), class: 'img-show' if @fond.image? %>
+    </div>
+    <%= @fond.body %>
+  </section> <br>
+  <small>
+    <b>Создан: </b><time><%= @fond.created_at.strftime("%e/%m/%y %H:%M")%></time>
+    |
+    <b>Последнее обновление: </b><time><%= @fond.updated_at.strftime("%e/%m/%y %H:%M")%></time>
+    <% if user_signed_in? && current_user.admin?%>
+      |
+      <%= link_to 'Изменить', rails_admin.edit_path(model_name: 'fond', id: @fond.id) %>
+      |
+      <%= link_to 'Удалить', rails_admin.delete_path(model_name: 'fond', id: @fond.id) %>
+    <% end %>
+
+  </small>
+  <section class="footer-summary">
+    <%= raw @fond.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-primary'}.join(' ') %>
+  </section>
+</article>
+
+<%= render 'disqus' %>
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>#ByClubbingTogether</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <nav class="navbar fixed-top navbar-light bg-light">
+        <a class="navbar-brand" href="<%= root_path %>">#ByClubbingTogether</a>
+
+
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+              <li class="nav-item">
+                <% unless current_user.admin? %>
+                  <%= link_to 'Профиль', user_path(current_user), class: 'btn btn-outline-primary' %>
+              <% end %>
+                <% if current_user.admin? %>
+                  <%= link_to 'Создать пост', rails_admin.new_path('fond'), class: 'btn btn-outline-primary' %>
+                  <%= link_to 'Админка', rails_admin.dashboard_path, class: 'btn btn-outline-primary' %>
+                <% end %>
+                <%= link_to 'Выход', destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
+                </li>
+            <% else %>
+                <div class="btn-group" role="group">
+                  <%= link_to 'Вход', new_user_session_path, class: 'btn btn-outline-info' %>
+                  <%= link_to 'Регистрация', new_user_registration_path, class: 'btn btn-outline-info' %>
+                </div>
+            <% end %>
+          </ul>
+
+      </nav>
+    </div>
+
+    <div class="container main">
+      <div class="row">
+        <div class="col-md-12">
+          <% flash.each do |name, message| %>
+            <div class="alert <%= bootstrap_class_for(name)%>">
+              <button class="close" data-dismiss="alert">&times;</button>
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <% if current_page?(root_path)%>
+          <div class="col-md-10">
+            <%= yield %>
+          </div>
+          <div class="col-md-2">
+            <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class|%>
+              <%= link_to tag.name, tag_path(tag.name), class:css_class %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="col-md-12">
+            <%= yield %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <a class="navbar-brand" href="#">⇡ Наверх</a>
+      <span class="text-muted"> e-mail: mail@bct.com</span>
+    </nav>
+
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<h1>Все посты с тегом #<%= @tag.name %></h1>
+
+<% if @tag.fonds.empty?  %>
+  <h2>Постов нет</h2>
+<% else %>
+  <%= render @tag.fonds %>
+<% end %>

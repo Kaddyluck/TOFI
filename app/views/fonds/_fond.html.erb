@@ -1,0 +1,26 @@
+<article class="fond">
+  <section class="fond-head">
+    <h2><%= link_to fond.title, fond_path(fond) %></h2>
+  </section>
+
+  <section class="fond-summary clearfix">
+    <%= image_tag fond.image.url(:thumb), class: 'img-thumbnail thumb' if fond.image?%>
+    <%= fond.summary %>
+  </section>
+
+  <small>
+    <b>Создан: </b><time><%= fond.created_at.strftime("%e/%m/%y %H:%M")%></time>
+    |
+    <b>Последнее обновление: </b><time><%= fond.updated_at.strftime("%e/%m/%y %H:%M")%></time>
+    <% if user_signed_in? && current_user.admin?%>
+      |
+      <%= link_to 'Изменить', rails_admin.edit_path(model_name: 'fond', id: fond.id) %>
+      |
+      <%= link_to 'Удалить', rails_admin.delete_path(model_name: 'fond', id: fond.id) %>
+    <% end %>
+  </small>
+
+  <section class="footer-summary">
+    <%= raw fond.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge badge-primary'}.join(' ') %>
+  </section>
+</article>
