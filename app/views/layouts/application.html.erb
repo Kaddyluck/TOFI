@@ -3,7 +3,6 @@
   <head>
     <title>#ByClubbingTogether</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,7 +17,13 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'Создать фонд', new_fond_path, class: 'btn btn-outline-primary' %>
+                <% unless current_user.admin? %>
+                  <%= link_to 'Профиль', user_path(current_user), class: 'btn btn-outline-primary' %>
+              <% end %>
+                <% if current_user.admin? %>
+                  <%= link_to 'Создать фонд', rails_admin.new_path('fond'), class: 'btn btn-outline-primary' %>
+                  <%= link_to 'Панель администратора', rails_admin.dashboard_path, class: 'btn btn-outline-primary' %>
+                <% end %>
                 <%= link_to 'Выход', destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
                 </li>
             <% else %>
@@ -43,8 +48,32 @@
           <% end %>
         </div>
       </div>
-      <%= yield %>
+
+      <div class="row">
+        <% if current_page?(root_path)%>
+          <div class="col-md-10">
+            <%= yield %>
+          </div>
+          <div class="col-md-2">
+            <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class|%>
+              <%= link_to tag.name, tag_path(tag.name), class:css_class %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="col-md-12">
+            <%= yield %>
+          </div>
+        <% end %>
+      </div>
     </div>
+
+    <br>
+    <br>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <a class="navbar-brand" href="#">⇡ Наверх</a>
+      <span class="text-muted"> e-mail: mail@bct.com</span>
+    </nav>
 
   </body>
 </html>

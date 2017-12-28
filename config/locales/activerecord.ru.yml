@@ -1,0 +1,31 @@
+ru:
+  activerecord:
+    models:
+      fond: 'Фонды'
+      user: 'Пользователи'
+      tag: 'Теги'
+      tagging: 'Теги - посты'
+    attributes:
+      user:
+        login: 'Имя пользователя*'
+        email: 'E-mail*'
+        fio: 'ФИО'
+        phone_num: 'Номер телефона'
+        password: 'Пароль*'
+        password_confirmation: 'Подтверждение пароля*'
+        current_password: 'Текущий пароль'
+        full_name: 'ФИО'
+        dob: 'Дата рождения'
+        phone: 'Номер контактного телефона'
+      fond:
+        title: 'Название'
+        summary: 'Краткое описание'
+        body: 'Полное описание'
+        tags: 'Тэги'
+        image: 'Изображение'
+        already_collected: 'Собранная сумма'
+        full_price: 'Всего нужно собрать'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+        taken: 'уже используется в системе'

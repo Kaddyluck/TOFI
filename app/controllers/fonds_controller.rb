@@ -1,6 +1,5 @@
 class FondsController < ApplicationController # :nodoc:
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_fond, only: [:show, :edit, :update, :destroy]
+  before_action :set_fond, only: :show
 
   def index
     @fonds = Fond.all
@@ -9,33 +8,16 @@ class FondsController < ApplicationController # :nodoc:
   def show
   end
 
-  def new
-    @fond = Fond.new
-  end
-
-  def create
-    @fond = Fond.new(fond_params)
-    if @fond.save
-      redirect_to @fond, success: 'Фонд успешно создан'
+  def add_money
+    @fond = Fond.find(params[:fond_id])
+    @user = User.find(current_user)
+    if params[:amount].to_i <= @user.balance
+      @fond.update_attribute(:already_collected, @fond.already_collected + params[:amount].to_i)
+      @user.update_attribute(:balance, @user.balance -= params[:amount].to_i)
     else
-      render :new, danger: 'Фонд не создан'
+      render js: "alert('The number is: #{params[:id]}')"
     end
-  end
 
-  def edit
-  end
-
-  def update
-    if @fond.update_attributes(fond_params)
-      redirect_to @fond, success: 'Фонд успешно обновлён'
-    else
-      render :edit, danger: 'Фонд не обновлён'
-    end
-  end
-
-  def destroy
-    @fond.destroy
-    redirect_to fonds_path, success: 'Фонд успешно удалён'
   end
 
   private
@@ -44,7 +26,4 @@ class FondsController < ApplicationController # :nodoc:
     @fond = Fond.find(params[:id])
   end
 
-  def fond_params
-    params.require(:fond).permit(:title, :summary, :body, :image)
-  end
 end

@@ -1,17 +1,22 @@
-<h2>Регистрация</h2>
+<h2 align="center"><%= t('.title')%></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-group">
+    <%= f.label :login %><br />
+    <%= f.text_field :login, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    <%= f.email_field :email, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> символов минимум)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
   </div>
@@ -21,8 +26,26 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", class: "btn btn-primary" %>
+  <div class="form-group">
+    <%= f.label :full_name %><br />
+    <%= f.text_field :fio, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :dob %><br />
+    <%= f.date_select :dob, start_year: 1950, end_year: 2000, order: [:day, :month, :year], class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone %><br />
+    <%= f.phone_field :phone_num, class: "form-control" %>
+  </div>
+
+
+
+
+  <div class="actions" align="center">
+    <%= f.submit "Зарегестрироваться", class: "btn btn-primary" %>
   </div>
 <% end %>
 
