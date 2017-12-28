@@ -1,24 +1,11 @@
-# README
+# ByClubbingTogether fond system
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+For starting project: 
+1) git clone
+2) bundle install
+3) rake db:migrate
+4) rails s
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version: 2.3.1
+* Rails version: 4.2.10
+* System dependencies: ImageMagic
